@@ -1,16 +1,12 @@
 package ar.com.educacionit.app.domain.clases;
 
-public class Libro extends Articulo {
+public final class Libro extends Articulo {
 
 	private String isbn;
-
-	public Libro() {
-		super();
-	}
 	
-	public Libro(String titulo, float precio, String catogoria, String autor, String isbn) {
+	public Libro(String codigo, String titulo, float precio, String catogoria, String autor, String isbn) {
 		//nace el padre
-		super(titulo, precio, catogoria, autor);
+		super(codigo, titulo, precio, catogoria, autor);
 		
 		//los atributos propios = this del hijo
 		this.isbn = isbn;
@@ -23,5 +19,6 @@ public class Libro extends Articulo {
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
+	
 	
 }

@@ -4,9 +4,9 @@ public class Pelicula extends Articulo {
 
 	private double duracion;
 
-	public Pelicula(String titulo, float precio, String catogoria, String autor, long duracion) {
+	public Pelicula(String codigo, String titulo, float precio, String catogoria, String autor, long duracion) {
 		//nace el padre
-		super(titulo, precio, catogoria, autor);
+		super(codigo, titulo, precio, catogoria, autor);
 		
 		//los atributos propios = this del hijo
 		this.duracion = duracion;
@@ -18,5 +18,14 @@ public class Pelicula extends Articulo {
 
 	public void setDuracion(double duracion) {
 		this.duracion = duracion;
+	}
+	
+	//polimorfismo con redefinicion
+	@Override
+	public void informar() {
+		
+		super.informar();
+		
+		System.out.println("Duración: " + this.getDuracion());
 	}
 }

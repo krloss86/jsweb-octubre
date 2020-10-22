@@ -21,11 +21,11 @@ public class Buscador {
 		
 		//PADRE P = NEW HIJO()
 		
-		Articulo libro = new Libro("carlos", 1500f, "libro", this.claveBusqueda, "1234567890");
+		Articulo libro = new Libro("0001","carlos", 1500f, "libro", this.claveBusqueda, "1234567890");
 		libro.setUrlImagen("http://tmk.com.ar/imagen/123456.jpg");
 		
 		//PADRE P = NEW HIJO()
-		Articulo pelicula = new Pelicula(this.claveBusqueda, new Float(1750), "PELICULA", "Autor xyz", 2);
+		Articulo pelicula = new Pelicula("0002",this.claveBusqueda, new Float(1750), "PELICULA", "Autor xyz", 2);
 		pelicula.setUrlImagen("http://tmk.com.ar/imagen/748596.jpg");
 		
 		String[] masImagenesPelicula = new String[2];

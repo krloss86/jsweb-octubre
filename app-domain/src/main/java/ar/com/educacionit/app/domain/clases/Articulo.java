@@ -12,12 +12,10 @@ public class Articulo {
 	private String urlImagen;
 	private String[] urlMasImagenes;
 	
-	public Articulo() {
-	
-	}
+	protected String codigo;
 	
 	//alt+shift+s
-	public Articulo(String titulo, float precio, String catogoria, String autor) {
+	public Articulo(String codigo, String titulo, float precio, String catogoria, String autor) {
 		this.titulo = titulo;
 		this.precio = precio;
 		this.catogoria = catogoria;
@@ -93,7 +91,34 @@ public class Articulo {
 	public void setUrlMasImagenes(String[] urlMasImagenes) {
 		this.urlMasImagenes = urlMasImagenes;
 	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 	
+	public void informar() {
+		//mostar los datos del articulo
+		System.out.println("Titulo: " + this.getTitulo());
+		System.out.println("Autor: " + this.getAutor());
+		System.out.println("Precio: " + this.getPrecio());
+		System.out.println("Categoria: " + this.getCatogoria());
+		
+		if(this.tieneImagen()) {
+			System.out.println("Imagen: " + this.getUrlImagen());
+		}else {
+			System.out.println("Imagen Generica");
+		}
+		
+		if(this.tieneMasImagenes()) {
+			for(String imagen : this.getUrlMasImagenes()) {
+				System.out.println("Imagen: " + imagen);
+			}
+		}
+	}
 	//getter/setter
 	//alt+shit+s
 	
