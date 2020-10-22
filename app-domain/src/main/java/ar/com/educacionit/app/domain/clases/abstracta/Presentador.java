@@ -12,7 +12,6 @@ public class Presentador {
 	
 	public void agregarResultados(Articulo[] resultados) {//10
 		if(this.resultados == null) {
-			this.resultados = new Articulo[resultados.length];
 			this.resultados = resultados;
 		}else {
 			
