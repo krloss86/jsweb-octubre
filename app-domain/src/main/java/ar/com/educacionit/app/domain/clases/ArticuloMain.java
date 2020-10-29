@@ -1,5 +1,7 @@
 package ar.com.educacionit.app.domain.clases;
 
+import ar.com.educacionit.clase5.BuscadorException;
+
 public class ArticuloMain {
 
 	public static void main(String[] args) {
@@ -10,7 +12,13 @@ public class ArticuloMain {
 		
 		Buscador buscador = new Buscador(claveBuscadaPorUsuario);
 		
-		buscador.buscar();
+		try {
+			buscador.buscar();
+		} catch (BuscadorException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		Integer cantResultados = buscador.getCantResult();
 		

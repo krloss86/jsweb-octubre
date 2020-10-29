@@ -1,5 +1,7 @@
 package ar.com.educacionit.app.domain.clases;
 
+import ar.com.educacionit.clase5.BuscadorException;
+
 public class Buscador {
 
 	//atributos
@@ -15,7 +17,7 @@ public class Buscador {
 		this.claveBusqueda = claveBuscada;
 	}
 	
-	public void buscar() {
+	public void buscar() throws BuscadorException, Exception {
 		//realiza la consulta  y actualiza el listado
 		//de articulos interno
 		
@@ -23,6 +25,13 @@ public class Buscador {
 		
 		Articulo libro = new Libro("0001","carlos", 1500f, "libro", this.claveBusqueda, "1234567890");
 		libro.setUrlImagen("http://tmk.com.ar/imagen/123456.jpg");
+		
+		if(false){
+			throw new BuscadorException("Erorr generado adrede!");
+		}
+		if(true) {
+			throw new Exception("Erorr generado adrede!");
+		}
 		
 		//PADRE P = NEW HIJO()
 		Articulo pelicula = new Pelicula("0002",this.claveBusqueda, new Float(1750), "PELICULA", "Autor xyz", 2);

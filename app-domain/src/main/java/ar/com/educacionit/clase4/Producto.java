@@ -10,9 +10,12 @@ package ar.com.educacionit.clase4;
  */
 public class Producto {
 
-	private int id;
-	private double precio;
+	private Integer id;
+	private Double precio;
 	private String descripcion;
+	
+	private String codigo;
+	private Long tipoProducto;
 	
 	//dos contructores
 	public Producto() {
@@ -24,6 +27,13 @@ public class Producto {
 		this.id = id;
 		this.precio = precio;
 		this.descripcion = descripcion;
+	}
+
+	public Producto(String codigo, String titulo, Double precio, Long tipoProducto) {
+		this.codigo = codigo;
+		this.descripcion = titulo;
+		this.precio = precio;
+		this.tipoProducto = tipoProducto;
 	}
 
 	@Override
@@ -75,4 +85,30 @@ public class Producto {
 		
 		return iguales;
 	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	public Long getTipoProducto() {
+		return tipoProducto;
+	}
+
+	public void setTipoProducto(Long tipoProducto) {
+		this.tipoProducto = tipoProducto;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
+	
+	
 }
