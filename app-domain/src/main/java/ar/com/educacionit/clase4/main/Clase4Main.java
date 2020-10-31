@@ -25,7 +25,7 @@ public class Clase4Main {
 		Domicilio domicilioCliente2 = new Domicilio(1, "siempre viva", "sprinfield", 1234);
 		cliente2.setDomicilio(domicilioCliente2);
 				
-		Producto producto = new Producto(1, 1500, "termo lumilagro");
+		Producto producto = new Producto(new Long(1), new Float(1500), "termo lumilagro");
 		
 		System.out.println(cliente.toString());
 		

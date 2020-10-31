@@ -10,10 +10,9 @@ package ar.com.educacionit.clase4;
  */
 public class Producto {
 
-	private Integer id;
-	private Double precio;
-	private String descripcion;
-	
+	private Long id;
+	private Float precio;
+	private String descripcion;	
 	private String codigo;
 	private Long tipoProducto;
 	
@@ -23,37 +22,41 @@ public class Producto {
 	}
 
 	//alt+shift+s
-	public Producto(int id, double precio, String descripcion) {
+	public Producto(Long id, Float precio, String descripcion) {
 		this.id = id;
 		this.precio = precio;
 		this.descripcion = descripcion;
 	}
 
-	public Producto(String codigo, String titulo, Double precio, Long tipoProducto) {
+	public Producto(String codigo, String titulo, Float precio, Long tipoProducto) {
 		this.codigo = codigo;
 		this.descripcion = titulo;
 		this.precio = precio;
 		this.tipoProducto = tipoProducto;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Producto [id=" + id + ", precio=" + precio + ", descripcion=" + descripcion + "]";
+		return "Producto {id=" + id + ", precio=" + precio + ", descripcion=" + descripcion + ", codigo=" + codigo
+				+ ", tipoProducto=" + tipoProducto + "}";
 	}
 
-	public int getId() {
+	//alt+shift+s
+	public Producto(Long id, Float precio, String descripcion, String codigo, Long tipoProducto) {
+		this.id = id;
+		this.precio = precio;
+		this.descripcion = descripcion;
+		this.codigo = codigo;
+		this.tipoProducto = tipoProducto;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
 
-	public double getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(double precio) {
+	public void setPrecio(Float precio) {
 		this.precio = precio;
 	}
 
@@ -102,13 +105,12 @@ public class Producto {
 		this.tipoProducto = tipoProducto;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public Float getPrecio() {
+		return precio;
 	}
 
-	public void setPrecio(Double precio) {
-		this.precio = precio;
+	public void setId(Long id) {
+		this.id = id;
 	}
-	
 	
 }

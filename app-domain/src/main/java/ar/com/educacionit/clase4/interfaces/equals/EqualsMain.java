@@ -6,8 +6,8 @@ public class EqualsMain {
 
 	public static void main(String[] args) {
 		
-		Producto p1 = new Producto(1, 1500, "termo lumilagro");		
-		Producto p2 = new Producto(1, 1500, "termo lumilagro");
+		Producto p1 = new Producto(1L, 1500f, "termo lumilagro");		
+		Producto p2 = new Producto(1L, 1500f, "termo lumilagro");
 		
 		if(p1 == p2) {
 			System.out.println("Son el mismo objetos");
