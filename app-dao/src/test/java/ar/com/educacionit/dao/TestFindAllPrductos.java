@@ -1,7 +1,7 @@
 package ar.com.educacionit.dao;
 
-import ar.com.educacionit.clase4.Producto;
 import ar.com.educacionit.dao.exceptions.GenericException;
+import ar.com.educacionit.domain.Producto;
 
 public class TestFindAllPrductos {
 

@@ -1,9 +1,9 @@
 package ar.com.educacionit.service;
 
-import ar.com.educacionit.clase4.Producto;
 import ar.com.educacionit.dao.ProductoDAO;
 import ar.com.educacionit.dao.exceptions.DuplicatedException;
 import ar.com.educacionit.dao.exceptions.GenericException;
+import ar.com.educacionit.domain.Producto;
 import ar.com.educacionit.service.exceptions.ServiceException;
 
 public class ProductoService {

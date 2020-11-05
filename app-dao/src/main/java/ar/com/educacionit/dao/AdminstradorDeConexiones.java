@@ -12,7 +12,7 @@ public class AdminstradorDeConexiones {
 		//paso1 nombre del Driver que usaremos
 		String driver = "com.mysql.jdbc.Driver";
 		
-		String dbConnectionString = "jdbc:mysql://127.0.0.1:3306/jsweb-octubre?serverTimezone=UTC";
+		String dbConnectionString = "jdbc:mysql://127.0.0.1:3306/jsweb-octubre?serverTimezone=UTC&useSSL=false";
 		
 		//username
 		String username = "root";

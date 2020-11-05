@@ -2,9 +2,8 @@ package ar.com.educacionit.dao;
 
 import java.util.Scanner;
 
-import ar.com.educacionit.clase4.Producto;
-import ar.com.educacionit.dao.exceptions.DuplicatedException;
-import ar.com.educacionit.dao.exceptions.GenericException;
+import ar.com.educacionit.dao.builder.ProductoAccionBuilder;
+import ar.com.educacionit.dao.interfaces.IAccion;
 
 public class ABMProductos {
 
@@ -21,6 +20,10 @@ public class ABMProductos {
 				System.out.println("1 - Crear Producto");
 				System.out.println("2 - Consultar por Codigo");
 				System.out.println("3 - Consultar todos");
+				System.out.println("4 - Eliminar producto");
+				System.out.println("5 - Actualizar producto");
+				System.out.println("6 - Consultar por ID");
+				System.out.println("7 - Búsqueda por título");
 				
 				try {
 					opcion = teclado.nextInt();
@@ -29,47 +32,9 @@ public class ABMProductos {
 				}
 			}while(opcion == null);
 	
-			if(opcion.equals(1)) {
-				System.out.print("Ingrese codigo:");
-				String codigo = teclado.next();
-				System.out.print("Ingrese Título:");
-				String titulo = teclado.next();
-				System.out.print("Ingrese Precio:");
-				Float precio = teclado.nextFloat();
-				System.out.print("Ingrese TipoProducto:");
-				Long tipoProducto = teclado.nextLong();
-				
-				Producto productoNuevo = new Producto(codigo, titulo, precio, tipoProducto);
-				
-				ProductoDAO pdao = new ProductoDAO();
-				try {
-					productoNuevo = pdao.insert(productoNuevo);
-					System.out.println(productoNuevo);
-				} catch (DuplicatedException | GenericException e) {
-					System.err.println("No se ha podido crear el producto" + e.getMessage());
-				} 
-			}else if(opcion.equals(2)) {
-				System.out.print("Ingrese codigo a buscar");
-				String codigo = teclado.next();
-				
-				ProductoDAO pdao = new ProductoDAO();
-				try {
-					Producto producto = pdao.getByCodigo(codigo);
-					System.out.println(producto);
-				} catch (GenericException e) {
-					System.err.println(e.getMessage());
-				}
-			}else if(opcion.equals(3)) {
-				ProductoDAO pdao = new ProductoDAO();
-				try {
-					Producto[] productos = pdao.findProductos();
-					for(Producto producto : productos) {
-						System.out.println(producto);
-					}
-				} catch (GenericException e) {
-					System.err.println(e.getMessage());
-				}
-			}
+			IAccion accion = ProductoAccionBuilder.buildAccion(opcion);
+			
+			accion.ejecutar();
 			
 			System.out.println("------------------------------------------------------------");
 			System.out.println("Desea continuar?");
@@ -77,7 +42,6 @@ public class ABMProductos {
 			
 			String opcionContinuar = teclado.next();
 			continuar = "S".equalsIgnoreCase(opcionContinuar);
-			// teclado.next();
 		}while(continuar);
 		
 		teclado.close();

@@ -1,6 +1,6 @@
 package ar.com.educacionit.abm;
 
-import ar.com.educacionit.clase4.Producto;
+import ar.com.educacionit.domain.Producto;
 import ar.com.educacionit.service.ProductoService;
 import ar.com.educacionit.service.exceptions.ServiceException;
 
@@ -10,7 +10,7 @@ public class NuevoProductoMain {
 		
 		String codigo = "001";
 		String titulo = "Termo";
-		Double precio = 1500d;
+		Float precio = 1500f;
 		Long tipoProducto = 1l;//celulares
 		
 		Producto productoAGrabar = new Producto(codigo, titulo, precio, tipoProducto);
