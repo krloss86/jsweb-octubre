@@ -1,5 +1,7 @@
 package ar.com.educacionit.dao.builder;
 
+import ar.com.educacionit.dao.interfaces.AccionPorDefecto;
+import ar.com.educacionit.dao.interfaces.ActualizarPrecio;
 import ar.com.educacionit.dao.interfaces.ActualizarProducto;
 import ar.com.educacionit.dao.interfaces.ConsultaPorCodigo;
 import ar.com.educacionit.dao.interfaces.ConsultaPorID;
@@ -37,13 +39,12 @@ public class ProductoAccionBuilder {
 			case 7:
 				accion = new ConsultaPorTitulo();
 				break;
-			default:
-				accion = null;
+			case 8:
+				accion = new ActualizarPrecio();
 				break;
-		}
-		
-		if(accion == null ) {
-			throw new RuntimeException("Opción "+opcion+" Inválida");
+			default:
+				accion = new AccionPorDefecto();
+				break;
 		}
 		
 		return accion;

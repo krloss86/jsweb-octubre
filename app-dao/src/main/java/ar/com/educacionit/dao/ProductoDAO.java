@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import ar.com.educacionit.dao.exceptions.DuplicatedException;
 import ar.com.educacionit.dao.exceptions.GenericException;
@@ -158,12 +160,14 @@ public class ProductoDAO {
 		return producto;
 	}
 	
-	public Producto[] findProductos()  throws GenericException{
+	public Collection<Producto> findProductos()  throws GenericException{
+		
+		Collection<Producto> productos = new ArrayList<Producto>();
 		
 		Connection connection = AdminstradorDeConexiones.obtenerConexion();
 		
 		//saber cuantos hay
-		String  sql = "SELECT count(*) FROM productos";
+		String  sql = "SELECT * FROM productos";
 		
 		PreparedStatement statement;
 		try {
@@ -175,22 +179,13 @@ public class ProductoDAO {
 		try {
 			ResultSet resultSet = statement.executeQuery();
 			
-			Producto[] productos = null;
-			
 			if(resultSet.next()) {
-				
-				Long cantidad = resultSet.getLong(1);
-				int i = 0;
-				productos = new Producto[cantidad.intValue()];
-				
-				sql = "SELECT * FROM productos";
-				statement = connection.prepareStatement(sql);
-				
+								
 				resultSet = statement.executeQuery();
 				
 				while(resultSet.next()) {
 					Producto producto = productoDesdeResultSet(resultSet);
-					productos[i++] = producto;
+					productos.add(producto);
 				}
 			}
 
