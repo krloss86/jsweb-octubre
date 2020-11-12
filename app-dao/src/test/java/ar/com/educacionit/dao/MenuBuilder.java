@@ -1,7 +1,10 @@
 package ar.com.educacionit.dao;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import ar.com.educacionit.dao.exceptions.GenericException;
@@ -32,7 +35,12 @@ public final class MenuBuilder {
 	
 		StringBuffer menuStr = new StringBuffer();
 		
-		for(Menu menu : itemsMenu) {
+		List<Menu> listItems = new ArrayList<>(itemsMenu);
+		
+		//ordenamos el menu
+		Collections.sort(listItems);
+		
+		for(Menu menu : listItems) {
 			menuStr.append(menu.getOpcion()).append(" - ").append(menu.getDescripcion());
 			menuStr.append("\n");
 		}

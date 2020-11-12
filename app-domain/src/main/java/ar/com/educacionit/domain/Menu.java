@@ -1,6 +1,6 @@
 package ar.com.educacionit.domain;
 
-public class Menu {
+public class Menu implements Comparable<Menu>{
 
 	private Integer opcion;
 	
@@ -17,5 +17,16 @@ public class Menu {
 
 	public String getDescripcion() {
 		return descripcion;
+	}
+
+	@Override
+	/**
+	 * <0
+	 * >0
+	 * ==0
+	 */
+	public int compareTo(Menu otroMenu) {
+
+		return this.getDescripcion().compareTo(otroMenu.getDescripcion());
 	}
 }

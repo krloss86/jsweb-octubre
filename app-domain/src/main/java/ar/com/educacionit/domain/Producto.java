@@ -8,7 +8,8 @@ package ar.com.educacionit.domain;
  * @author CX PC
  *
  */
-public class Producto {
+//Al implementar comparable puedo dar prioridad
+public class Producto implements Comparable<Producto>{
 
 	private Long id;
 	private Float precio;
@@ -111,6 +112,12 @@ public class Producto {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	@Override
+	public int compareTo(Producto otroProducto) {
+		//asc? 
+		return this.precio.compareTo(otroProducto.getPrecio());
 	}
 	
 }
