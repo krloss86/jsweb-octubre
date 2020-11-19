@@ -52,7 +52,7 @@ public class ProductoDAO {
 		} catch (SQLException e) {
 			hasError = true;
 			if(e instanceof SQLIntegrityConstraintViolationException) {
-				throw new GenericException("No se ha podido crear el producto, producto duplicado", e);	
+				throw new DuplicatedException("No se ha podido crear el producto, producto duplicado", e);	
 			}
 			throw new GenericException("No se ha podido crear el producto", e);
 		} 
@@ -318,6 +318,45 @@ public class ProductoDAO {
 					Producto producto = productoDesdeResultSet(resultSet);
 					productos[i++] = producto;
 				}
+			}
+
+			return productos;
+			
+		} catch (SQLException e) {
+			throw new GenericException("No se han podido obtener los productos", e);
+		} 
+		finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new GenericException("NO se pudo cerrar la conexion, verfique en la DB las conexiones", e);
+			}
+		}
+	}
+	
+	public Collection<Producto> buscar(String titulo) throws GenericException {
+		
+		Connection connection = AdminstradorDeConexiones.obtenerConexion();
+		
+		//saber cuantos hay
+		String sql ="SELECT * FROM productos where upper(titulo) like '%"+titulo.toUpperCase()+"%'";
+		
+		PreparedStatement statement;
+		try {
+			statement = connection.prepareStatement(sql);
+			//statement.setString(1, titulo);
+		} catch (SQLException e) {
+			throw new GenericException("No se ha podido crear el Statement", e);
+		}
+
+		try {
+			ResultSet resultSet = statement.executeQuery();
+			
+			Collection<Producto> productos = new ArrayList<Producto>();
+				
+			while(resultSet.next()) {
+				Producto producto = productoDesdeResultSet(resultSet);
+				productos.add(producto);
 			}
 
 			return productos;

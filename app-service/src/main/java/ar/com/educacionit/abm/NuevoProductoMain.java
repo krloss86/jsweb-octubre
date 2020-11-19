@@ -1,7 +1,7 @@
 package ar.com.educacionit.abm;
 
 import ar.com.educacionit.domain.Producto;
-import ar.com.educacionit.service.ProductoService;
+import ar.com.educacionit.service.ProductoServiceImpl;
 import ar.com.educacionit.service.exceptions.ServiceException;
 
 public class NuevoProductoMain {
@@ -15,7 +15,7 @@ public class NuevoProductoMain {
 		
 		Producto productoAGrabar = new Producto(codigo, titulo, precio, tipoProducto);
 		
-		ProductoService productoService = new ProductoService();
+		ProductoServiceImpl productoService = new ProductoServiceImpl();
 		
 		try {
 			Producto productoGrabado = productoService.nuevoProducto(productoAGrabar);

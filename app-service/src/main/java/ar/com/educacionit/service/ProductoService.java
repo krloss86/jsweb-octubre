@@ -1,21 +1,22 @@
 package ar.com.educacionit.service;
 
-import ar.com.educacionit.dao.ProductoDAO;
-import ar.com.educacionit.dao.exceptions.DuplicatedException;
-import ar.com.educacionit.dao.exceptions.GenericException;
+import java.util.Collection;
+
 import ar.com.educacionit.domain.Producto;
 import ar.com.educacionit.service.exceptions.ServiceException;
 
-public class ProductoService {
+public interface ProductoService {
 
-	public Producto nuevoProducto(Producto productoAGrabar) throws ServiceException {
-		
-		ProductoDAO productoDao = new ProductoDAO();
-		
-		try {
-			return productoDao.insert(productoAGrabar);
-		} catch (DuplicatedException | GenericException e) {
-			throw new ServiceException("No se ha podido grabar el producto.", e);
-		}
-	}
+	public Producto nuevoProducto(Producto productoAGrabar) throws ServiceException;
+
+	public Collection<Producto> buscarProductos(String clave) throws ServiceException;
+
+	public Collection<Producto> obtenerProductos() throws ServiceException;
+
+	public void eliminarProducto(Long id) throws ServiceException;
+
+	public Producto obtenerProductoById(Long id) throws ServiceException;
+
+	public void actualizarProducto(Producto producto) throws ServiceException;
+	
 }
