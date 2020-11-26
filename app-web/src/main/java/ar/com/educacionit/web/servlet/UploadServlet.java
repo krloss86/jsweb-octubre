@@ -40,13 +40,17 @@ public class UploadServlet extends HttpServlet {
 		String name = fileName.substring(0, idx);
 		String type = fileName.substring(idx+1, fileName.length());
 		
-		IFileParser parser;
+		IFileParser parser = null;
 		
-		if(type.equals("csv")) {
-			parser = new CSVFileParser(type, fileName);
-		}else if(type.equals("xls")) {
-			parser = new CSVFileParser(type, fileName);
-		} else {
+		FileTypeEnum typeEnum = FileTypeEnum.getTypeByExt(type);
+		
+		if( typeEnum !=null) {
+			if(typeEnum.equals(FileTypeEnum.CSV)) {
+				parser = new CSVFileParser(type, fileName);
+			}else if(typeEnum.equals(FileTypeEnum.XSL)) {
+				parser = new CSVFileParser(type, fileName);
+			} 
+		}else {
 			parser = new CSVFileParser(type, fileName);
 		}
 		
@@ -69,14 +73,18 @@ public class UploadServlet extends HttpServlet {
 		String name = fileName.substring(0, idx);
 		String type = fileName.substring(idx+1, fileName.length());
 		
-	    IFileParser parser;
+		IFileParser parser = null;
 		
-		if(type.equals("csv")) {
-			parser = new CSVFileParser(type, filePart);
-		}else if(type.equals("xls")) {
-			parser = new CSVFileParser(type, filePart);
-		} else {
-			parser = new CSVFileParser(type, filePart);
+		FileTypeEnum typeEnum = FileTypeEnum.getTypeByExt(type);
+		
+		if( typeEnum !=null) {
+			if(typeEnum.equals(FileTypeEnum.CSV)) {
+				parser = new CSVFileParser(type, fileName);
+			}else if(typeEnum.equals(FileTypeEnum.XSL)) {
+				parser = new CSVFileParser(type, fileName);
+			} 
+		}else {
+			parser = new CSVFileParser(type, fileName);
 		}
 		
 		Collection<Producto> productos = parser.parse();
